@@ -164,14 +164,18 @@ class UncoreMetricName(str, Enum):
     PMM_BANDWIDTH_WRITE = 'pmm_bandwidth_write'
     CAS_COUNT_READ = 'cas_count_read'
     CAS_COUNT_WRITE = 'cas_count_write'
+    RPQ_OCCUPANCY = 'rpq_occupancy'
+    RPQ_INSERTS = 'rpq_inserts'
 
-
+# Max is 4 events
 UNCORE_IMC_EVENTS = [
     # https://github.com/opcm/pcm/blob/816dec444453c0e1253029e7faecfe1e024a071c/cpucounters.cpp#L3549
-    Event(name=UncoreMetricName.PMM_BANDWIDTH_READ, event=0xe3),
-    Event(name=UncoreMetricName.PMM_BANDWIDTH_WRITE, event=0xe7),
+#    Event(name=UncoreMetricName.PMM_BANDWIDTH_READ, event=0xe3),
+#    Event(name=UncoreMetricName.PMM_BANDWIDTH_WRITE, event=0xe7),
     Event(name=UncoreMetricName.CAS_COUNT_READ, event=0x04, umask=0x3),  # * 64 to get bytes
     Event(name=UncoreMetricName.CAS_COUNT_WRITE, event=0x04, umask=0xc),  # * 64 to get bytes
+    Event(name=UncoreMetricName.RPQ_OCCUPANCY, event=0x80),
+    Event(name=UncoreMetricName.RPQ_INSERTS, event=0x10)
 ]
 
 

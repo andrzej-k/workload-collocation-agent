@@ -106,7 +106,7 @@ class KubernetesNode(Node):
 
     def _request_kubeapi(self):
         kubeapi_endpoint = "https://{}:{}".format(self.kubeapi_host, self.kubeapi_port)
-        full_url = urljoin(kubeapi_endpoint, "/api/v1/namespaces/default/pods")
+        full_url = urljoin(kubeapi_endpoint, "/api/v1/namespaces/openfaas-fn/pods")
 
         log.debug("Created kubeapi endpoint %s", kubeapi_endpoint)
 
